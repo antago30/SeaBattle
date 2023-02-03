@@ -1,42 +1,32 @@
 package field;
 
 public class FieldImpl implements Field{
-    private byte[][] field;
+    private final int[][] field;
 
     public FieldImpl() {
-        field = new byte [10][10];
+        field = new int [10][10];
     }
 
-    // Проверка что коориднаты от 0 до 9, количество координат соответствует количеству палуб
-    @Override
-    public boolean coordinatesCheck(int[] coordinates, int numberOfDesk) {
-        boolean result = false;
+    public int getField(int x, int y) {
+        return field[x][y];
+    }
 
-        if (coordinates.length == numberOfDesk) {
-            for(int i: coordinates) {
-                result = i > 0 && i < 9;
-            }
+    public void addShip (int[] coordinates) {
+        for(int i = 0; i < coordinates.length; i = i + 2){
+            field[i][++i] = 1;
         }
-        return result;
     }
 
-    // Проверка валидности корабля, то есть что введенные координаты идут по порядку
-    @Override
-    public boolean validationCheck(int[] coordinates) {
-        boolean result = false;
+    public void addOreol (int[] coordinates) {
 
-        for (int i = 0; i < coordinates.length - 2; i++) {
-            if (coordinates[i] == coordinates[i+2]) {
-                
+    }
+
+    public void printField () {
+        for(int[] x: field) {
+            for (int y: x) {
+                System.out.print(y);
             }
+            System.out.println();
         }
-
-        return result;
-    }
-
-    // Проверка что корабль распологается в свободнгом месте и проверка ореола
-    @Override
-    public void positionCheck() {
-
     }
 }

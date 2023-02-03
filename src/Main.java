@@ -5,12 +5,13 @@ import player.PlayerImpl;
 
 public class Main {
     public static void main(String[] args) {
-        Player player1 = new PlayerImpl("Èãðîê 1");
-        Player player2 = new PlayerImpl("Èãðîê 2");
-
         Field fieldPlayer1 = new FieldImpl();
         Field fieldPlayer2 = new FieldImpl();
 
+        Player player1 = new PlayerImpl("Ð˜Ð³Ñ€Ð¾Ðº1", fieldPlayer1);
+        Player player2 = new PlayerImpl("Ð˜Ð³Ñ€Ð¾Ðº2", fieldPlayer2);
 
+        player1.addShips();
+        fieldPlayer1.printField();
     }
 }

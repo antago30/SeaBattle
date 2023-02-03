@@ -1,9 +1,8 @@
 package field;
 
 public interface Field {
-    boolean coordinatesCheck(int[] coordinates, int numberOfDesk);
-    boolean validationCheck(int[] coordinates);
-    void positionCheck();
-
-
+    int getField(int x, int y);
+    void addShip (int[] coordinates);
+    void addOreol(int[] coordinates);
+    void printField ();
 }
