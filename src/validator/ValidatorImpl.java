@@ -24,22 +24,42 @@ public class ValidatorImpl implements Validator{
     public boolean validationCheck(int[] coordinates) {
         boolean result = false;
 
-        if(coordinates[0] == coordinates[2] && coordinates[2] == coordinates[4] && coordinates[4] == coordinates[6]) {
-
-            if (coordinates[3] == coordinates[1]+1 && coordinates[5] == coordinates[3]+1 && coordinates[7] == coordinates[5]+1)
+        switch (coordinates.length) {
+            case (2) -> {
                 result = true;
-            else if (coordinates[3] == coordinates[1]-1 && coordinates[5] == coordinates[3]-1 && coordinates[7] == coordinates[5]-1)
-                result = true;
-
-        } else if (coordinates[1] == coordinates[3] && coordinates[3] == coordinates[5] && coordinates[5] == coordinates[7]) {
-
-            if (coordinates[2] == coordinates[0]+1 && coordinates[4] == coordinates[2]+1 && coordinates[6] == coordinates[4]+1)
-                result = true;
-            else if (coordinates[2] == coordinates[0]-1 && coordinates[4] == coordinates[2]-1 && coordinates[6] == coordinates[4]-1)
-                result = true;
-
+            }
+            case (4) -> {
+                if (coordinates[0] == coordinates[2]) {
+                    if ((coordinates[3] == coordinates[1] + 1) || (coordinates[3] == coordinates[1] - 1))
+                        result = true;
+                } else if (coordinates[1] == coordinates[3]) {
+                    if ((coordinates[2] == coordinates[0] + 1) || (coordinates[2] == coordinates[0] - 1))
+                        result = true;
+                }
+            }
+            case (6) -> {
+                if (coordinates[0] == coordinates[2] && coordinates[2] == coordinates[4]) {
+                    if ((coordinates[3] == coordinates[1]+1 && coordinates[5] == coordinates[3]+1) ||
+                        (coordinates[3] == coordinates[1]-1 && coordinates[5] == coordinates[3]-1))
+                            result = true;
+                } else if (coordinates[1] == coordinates[3] && coordinates[3] == coordinates[5]) {
+                    if ((coordinates[2] == coordinates[0]+1 && coordinates[4] == coordinates[2]+1) ||
+                        (coordinates[2] == coordinates[0]-1 && coordinates[4] == coordinates[2]-1))
+                            result = true;
+                }
+            }
+            case (8) -> {
+                if (coordinates[0] == coordinates[2] && coordinates[2] == coordinates[4] && coordinates[4] == coordinates[6]) {
+                    if ((coordinates[3] == coordinates[1]+1 && coordinates[5] == coordinates[3]+1 && coordinates[7] == coordinates[5]+1) ||
+                        (coordinates[3] == coordinates[1]-1 && coordinates[5] == coordinates[3]-1 && coordinates[7] == coordinates[5]-1))
+                            result = true;
+                } else if (coordinates[1] == coordinates[3] && coordinates[3] == coordinates[5] && coordinates[5] == coordinates[7]) {
+                    if ((coordinates[2] == coordinates[0]+1 && coordinates[4] == coordinates[2]+1 && coordinates[6] == coordinates[4]+1) ||
+                        (coordinates[2] == coordinates[0]-1 && coordinates[4] == coordinates[2]-1 && coordinates[6] == coordinates[4]-1))
+                            result = true;
+                }
+            }
         }
-
         return result;
     }
 

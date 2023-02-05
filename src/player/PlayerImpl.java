@@ -56,6 +56,7 @@ public class PlayerImpl implements Player{
 
                 field.addShip(coordinatesInt);
                 //field.addOreol(coordinatesInt);
+                field.printField();
 
                 ships--;
             }
